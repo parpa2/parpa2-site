@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PARPA2 — Audiovisual Studio · Guadalajara</title>
+<meta name="description" content="PARPA2 is an audiovisual studio from Guadalajara, Jalisco. Music videos, live shows, live sessions and show visuals." />
+<meta property="og:title" content="PARPA2 — Audiovisual Studio" />
+<meta property="og:description" content="Music videos, live shows, live sessions and show visuals. Guadalajara, MX." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000; --bg-2:#0A0A0B;
+  --fg:#F5F3EE; --fg-dim:#7A7A80;
+  --accent:#1E3A5F; --accent-light:#6C8FB3;
+  --accent-glow:rgba(30,58,95,.28);
+  --line:rgba(245,243,238,.08); --line-strong:rgba(245,243,238,.16);
+  --serif:'Fraunces','Times New Roman',serif;
+  --sans:'Archivo',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);font-family:var(--serif);font-weight:300;
+  font-optical-sizing:auto;line-height:1.4;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+
+.label{font-family:var(--sans);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim)}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:1fr auto;align-items:center;padding:28px 40px;mix-blend-mode:difference}
+.brand{font-family:var(--serif);font-weight:400;font-size:18px;letter-spacing:.3em;color:#fff}
+.brand span{font-style:italic;font-weight:300}
+.nav-toggle{font-family:var(--sans);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#fff;background:none;border:none;cursor:pointer;padding:8px 0;display:flex;align-items:center;gap:10px}
+.nav-toggle .dot{width:6px;height:6px;background:var(--fg);border-radius:50%}
+
+/* ── MENU ── */
+.menu-overlay{position:fixed;inset:0;background:var(--bg);z-index:40;opacity:0;pointer-events:none;transition:opacity .6s cubic-bezier(.65,0,.35,1)}
+.menu-overlay.is-open{opacity:1;pointer-events:auto}
+.menu-list{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);list-style:none;text-align:center;width:100%;max-width:620px}
+.menu-list li{position:relative;padding:20px 0;border-top:1px solid var(--line);opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.menu-list li:last-child{border-bottom:1px solid var(--line)}
+.menu-overlay.is-open .menu-list li{opacity:1;transform:translateY(0)}
+.menu-overlay.is-open .menu-list li:nth-child(1){transition-delay:.14s}
+.menu-overlay.is-open .menu-list li:nth-child(2){transition-delay:.2s}
+.menu-overlay.is-open .menu-list li:nth-child(3){transition-delay:.26s}
+.menu-overlay.is-open .menu-list li:nth-child(4){transition-delay:.32s}
+.menu-overlay.is-open .menu-list li:nth-child(5){transition-delay:.38s}
+.menu-overlay.is-open .menu-list li:nth-child(6){transition-delay:.44s}
+.menu-list a{font-family:var(--serif);font-weight:300;font-size:clamp(38px,6.4vw,76px);letter-spacing:-.02em;font-style:italic;display:inline-block;transition:color .3s ease,letter-spacing .5s ease}
+.menu-list a:hover{color:var(--accent-light);letter-spacing:.02em}
+.menu-list .num{position:absolute;top:50%;left:6%;transform:translateY(-50%);font-family:var(--sans);font-size:10.5px;color:var(--fg-dim);letter-spacing:.22em}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:640px;width:100%;overflow:hidden;display:flex;align-items:flex-end;padding:0 40px 60px}
+.hero-video-wrap{position:absolute;inset:0;background:var(--bg-2);overflow:hidden}
+.hero-iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.77vh;transform:translate(-50%,-50%);pointer-events:none;border:0;filter:brightness(.5) contrast(1.05)}
+.hero-video-wrap::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.72) 100%);pointer-events:none;z-index:1}
+.hero-content{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:60px}
+.hero-title{font-family:var(--serif);font-weight:200;font-size:clamp(44px,7vw,96px);line-height:.98;letter-spacing:-.03em;font-style:italic}
+.hero-title .em{font-weight:400;font-style:normal;letter-spacing:.01em}
+.hero-meta{text-align:right;display:flex;flex-direction:column;gap:10px}
+.hero-meta .line{width:60px;height:1px;background:var(--fg);margin-left:auto;opacity:.4}
+.hero-meta p{font-family:var(--sans);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg)}
+.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;color:var(--fg-dim);text-transform:uppercase;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero-scroll .stick{width:1px;height:40px;background:rgba(245,243,238,.2);position:relative;overflow:hidden}
+.hero-scroll .stick::after{content:"";position:absolute;top:0;left:0;width:100%;height:50%;background:var(--fg);animation:scroll-line 2.4s ease-in-out infinite}
+@keyframes scroll-line{0%{transform:translateY(-100%)}50%{transform:translateY(100%)}100%{transform:translateY(100%)}}
+
+/* ── INDEX BAR ── */
+.index-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-family:var(--sans);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase}
+.index-bar>div{padding:22px 28px;border-right:1px solid var(--line);color:var(--fg-dim)}
+.index-bar>div:last-child{border-right:none}
+.index-bar>div span{color:var(--fg);display:block;margin-top:6px}
+
+/* ── SECTIONS ── */
+.section{padding:130px 40px;position:relative}
+.section-head{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:40px;margin-bottom:70px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.section-head h2{font-family:var(--serif);font-weight:200;font-size:clamp(36px,5vw,64px);letter-spacing:-.025em;font-style:italic}
+.section-head h2 .em{font-style:normal;font-weight:400}
+
+/* ── CATEGORÍAS ── */
+.category{margin-bottom:110px}
+.category:last-child{margin-bottom:0}
+.category-head{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:28px;padding-bottom:16px;margin-bottom:34px;border-bottom:1px solid var(--line)}
+.category-head h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(26px,3.2vw,40px);letter-spacing:-.025em}
+.category-head .rule{height:1px;background:var(--line-strong);transform:translateY(-6px)}
+
+/* ── GRID DE PROYECTOS ── */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:34px}
+.project{position:relative;cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.project:hover{transform:translateY(-4px)}
+.project.is-featured{grid-column:1 / -1}
+.project-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--bg-2)}
+.project-thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) brightness(.9);transition:filter .8s ease,transform 1.2s cubic-bezier(.16,1,.3,1)}
+.project:hover .project-thumb img{filter:grayscale(0) brightness(1);transform:scale(1.04)}
+.project-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.45) 100%);pointer-events:none}
+.project-num{position:absolute;top:16px;left:16px;font-family:var(--sans);font-size:9.5px;color:rgba(245,243,238,.85);letter-spacing:.2em;z-index:2;background:rgba(0,0,0,.45);padding:6px 10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.project-tag{position:absolute;top:16px;right:16px;font-family:var(--sans);font-size:9.5px;color:var(--fg);letter-spacing:.2em;text-transform:uppercase;z-index:2;background:rgba(30,58,95,.55);border:1px solid rgba(108,143,179,.35);padding:6px 10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.project-info{padding:20px 2px 0;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start}
+.project-info h4{font-family:var(--serif);font-weight:400;font-size:21px;letter-spacing:-.012em;line-height:1.2}
+.project-info h4 .sub{font-style:italic;font-weight:300;color:var(--fg-dim);display:block;font-size:14.5px;margin-top:5px}
+.project-info .year{font-family:var(--sans);font-size:10.5px;color:var(--fg-dim);letter-spacing:.14em}
+
+/* ── MODAL ── */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:200;display:none;align-items:center;justify-content:center;padding:60px 40px 40px}
+.modal.is-open{display:flex;animation:fade .4s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal-content{width:100%;max-width:1180px;position:relative}
+.modal-video{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal-info{padding-top:22px;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:baseline}
+.modal-info h3{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-.012em}
+.modal-info h3 .sub{font-style:italic;font-weight:300;color:var(--fg-dim);display:block;font-size:16px;margin-top:5px}
+.modal-meta{font-family:var(--sans);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg-dim);white-space:nowrap}
+.modal-close{position:absolute;top:-42px;right:0;background:none;border:1px solid var(--line-strong);color:var(--fg);font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;padding:9px 16px;cursor:pointer;text-transform:uppercase;transition:all .3s ease;z-index:5}
+.modal-close:hover{background:var(--fg);color:var(--bg)}
+
+/* ── STUDIO ── */
+.studio-block{max-width:1100px}
+.studio-lead{font-family:var(--serif);font-weight:200;font-style:italic;font-size:clamp(34px,5.2vw,76px);line-height:1.06;letter-spacing:-.035em;margin-bottom:64px;max-width:15ch}
+.studio-lead em{font-style:normal;font-weight:400;color:var(--accent-light)}
+.studio-cols{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding-top:40px;border-top:1px solid var(--line)}
+.studio-body{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.75;color:var(--fg);opacity:.78;max-width:46ch}
+.studio-services{font-family:var(--serif);font-weight:300;font-size:clamp(19px,2vw,26px);line-height:1.55;letter-spacing:-.01em}
+.studio-services span{display:block}
+
+
+/* ── CLIENTS ── */
+.clients{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.clients-track{display:flex;gap:80px;animation:marquee 55s linear infinite;white-space:nowrap}
+.clients-track span{font-family:var(--serif);font-weight:200;font-style:italic;font-size:clamp(34px,4.6vw,60px);color:var(--fg-dim);letter-spacing:-.03em}
+.clients-track span::after{content:"✦";margin-left:80px;color:var(--accent-light);font-style:normal}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── CONTACT ── */
+.contact-section{padding:150px 40px;text-align:center;position:relative;overflow:hidden}
+.contact-section::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:820px;height:820px;background:radial-gradient(circle,var(--accent-glow) 0%,transparent 70%);pointer-events:none;z-index:0}
+.contact-content{position:relative;z-index:1}
+.contact-section .label{margin-bottom:26px;display:block}
+.contact-section h2{font-family:var(--serif);font-weight:200;font-size:clamp(52px,8.5vw,132px);line-height:.94;letter-spacing:-.045em;font-style:italic;margin-bottom:60px}
+.contact-section h2 .em{font-style:normal;font-weight:400}
+.contact-mail{display:inline-block;font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);font-weight:400;border-bottom:1px solid var(--accent-light);padding-bottom:6px;transition:color .3s ease}
+.contact-mail:hover{color:var(--accent-light)}
+.contact-meta{margin-top:56px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;font-family:var(--sans);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim)}
+.contact-meta a{color:var(--fg)}
+.contact-meta a:hover{color:var(--accent-light)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--line);padding:32px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--fg-dim)}
+footer .center{text-align:center}
+footer .right{text-align:right}
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px){
+  .nav{padding:22px 24px}
+  .hero{padding:0 24px 40px}
+  .hero-content{grid-template-columns:1fr;gap:30px}
+  .hero-meta{text-align:left}
+  .hero-meta .line{margin-left:0}
+  .index-bar{grid-template-columns:repeat(2,1fr)}
+  .index-bar>div:nth-child(2n){border-right:none}
+  .index-bar>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .section{padding:80px 24px}
+  .section-head{grid-template-columns:auto 1fr;gap:20px}
+  .section-head .meta{display:none}
+  .category{margin-bottom:70px}
+  .category-head{grid-template-columns:auto 1fr;gap:16px}
+  .category-head .count{display:none}
+  .grid{grid-template-columns:1fr;gap:26px}
+  .studio-lead{max-width:100%;margin-bottom:44px}
+  .studio-cols{grid-template-columns:1fr;gap:36px}
+  .contact-section{padding:90px 24px}
+  .modal{padding:56px 18px 20px}
+  .modal-info{grid-template-columns:1fr;gap:12px}
+  footer{grid-template-columns:1fr;text-align:center;gap:16px}
+  footer .center,footer .right{text-align:center}
+}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.is-in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="brand">PARPA<span>2</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span class="dot"></span><span>Menu</span></button>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay">
+  <ul class="menu-list">
+    <li><span class="num">01</span><a href="#music-videos">Music Videos</a></li>
+    <li><span class="num">02</span><a href="#live-shows">Live Shows</a></li>
+    <li><span class="num">03</span><a href="#live-sessions">Live Sessions</a></li>
+    <li><span class="num">04</span><a href="#studio">Studio</a></li>
+    <li><span class="num">05</span><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<header class="hero">
+  <div class="hero-video-wrap">
+    <iframe class="hero-iframe" id="heroFrame" src="" allow="autoplay; encrypted-media" allowfullscreen title="PARPA2 reel"></iframe>
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">Audiovisual<br/>studio<br/><span class="em">PARPA<span style="font-style:italic;font-weight:300;">2</span></span></h1>
+    <div class="hero-meta">
+      <p>Reel · 2026</p>
+      <div class="line"></div>
+      <p>Guadalajara — MX</p>
+      <p>Available across LATAM</p>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="stick"></div></div>
+</header>
+
+<div class="index-bar">
+  <div>Index<span id="workCount">—</span></div>
+  <div>Year<span>MMXXVI</span></div>
+  <div>Disciplines<span>Direction · Camera · Post</span></div>
+  <div>Base<span>Guadalajara, MX</span></div>
+</div>
+
+<section class="section" id="work">
+  <header class="section-head">
+    <span class="label">/ 01</span>
+    <h2>Selected <span class="em">work</span></h2>
+    <span class="label meta" id="workRange">2025 / 2026</span>
+  </header>
+  <div id="workBody"></div>
+</section>
+
+<section class="section" id="studio">
+  <header class="section-head">
+    <span class="label">/ 02</span>
+    <h2>The <span class="em">studio</span></h2>
+    <span class="label meta">Statement</span>
+  </header>
+  <div class="studio-block">
+    <p class="studio-lead">We believe visual and sonic language <em>materializes</em> experience.</p>
+    <div class="studio-cols">
+      <p class="studio-body">PARPA2 is an audiovisual studio from Guadalajara, Jalisco. We document and edit projects with an authorial signature, channeling the visual communication each one requires.</p>
+      <div class="studio-services">
+        <span>Music videos</span>
+        <span>Live sessions</span>
+        <span>Documented concerts</span>
+        <span>Show visuals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clients" class="clients">
+  <div class="clients-track" id="clientsTrack"></div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-content">
+    <span class="label">/ 03 — Contact</span>
+    <h2>Let's talk<br/>about your <span class="em">project</span>.</h2>
+    <a href="mailto:parpadosprod@gmail.com?subject=New%20project%20%C2%B7%20PARPA2&body=Hi%20PARPA2%2C%0A%0AI%27d%20like%20to%20work%20with%20you.%0A%0AProject%3A%20%0ADates%3A%20%0AEstimated%20budget%3A%20%0A%0ABest%2C" class="contact-mail">parpadosprod@gmail.com</a>
+    <div class="contact-meta">
+      <a href="https://www.instagram.com/parpa2vision/" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="https://www.facebook.com/parpa2vision" target="_blank" rel="noopener">Facebook ↗</a>
+      <span>Guadalajara, MX</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© PARPA2 · MMXXVI</div>
+  <div class="center">Audiovisual studio</div>
+  <div class="right">Made in Guadalajara</div>
+</footer>
+
+<div class="modal" id="videoModal" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">Close ✕</button>
+    <div class="modal-video"><iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen title="Project video"></iframe></div>
+    <div class="modal-info">
+      <h3><span id="mTitle"></span><span class="sub" id="mSub"></span></h3>
+      <div class="modal-meta"><span id="mTag"></span> · <span id="mYear"></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   1 · CONFIGURACIÓN
+   ═══════════════════════════════════════════════════════════ */
+const CONFIG = {
+  // Video de fondo del hero. Cambiar por el demo reel cuando esté listo.
+  heroVideoId: '-lfvvRaFnDM',
+
+  // Orden y nombre de las secciones de Work.
+  categories: [
+    { id: 'music-videos',  name: 'Music Videos'  },
+    { id: 'live-shows',    name: 'Live Shows'    },
+    { id: 'live-sessions', name: 'Live Sessions' }
+  ]
+};
+
+/* ═══════════════════════════════════════════════════════════
+   2 · PROYECTOS
+   Para agregar uno: copia un bloque completo y cambia los valores.
+   category → 'music-videos' | 'live-shows' | 'live-sessions'
+   video    → { id: 'ABC123' }  o  { playlist: 'PL...' }
+   featured → true  hace que ocupe el ancho completo de su sección
+   ═══════════════════════════════════════════════════════════ */
+const PROJECTS = [
+
+  {
+    category: 'music-videos',
+    artist:   'Los Afro Brothers',
+    title:    'Ahora que te has ido de mí',
+    year:     2025,
+    tag:      'Music Video',
+    video:    { id: 'M_pdVA0FMQY' },
+    image:    'mv-afro-brothers-ahora-que-te-has-ido.jpg'
+  },
+  {
+    category: 'music-videos',
+    artist:   'Mexican Balkan Orkestar',
+    title:    'Cocek Srece',
+    year:     2025,
+    tag:      'Music Video',
+    video:    { id: 'QswcZHgypxI' },
+    image:    'mv-mexican-balkan-cocek-srece.jpg'
+  },
+  {
+    category: 'music-videos',
+    artist:   'Le Funk',
+    title:    'Le Girls',
+    year:     2025,
+    tag:      'Series',
+    video:    { playlist: 'PL-74pB-gUO9M6o00TiBpNH8bBlXL5h1qn' },
+    image:    'mv-le-girls.jpg'
+  },
+  {
+    category: 'music-videos',
+    artist:   'Los Afro Brothers',
+    title:    'La vida solo es una vez',
+    year:     2025,
+    tag:      'Music Video',
+    video:    { id: 'M5i09g1Lhhc' },
+    image:    'mv-afro-brothers-la-vida-solo-es-una-vez.jpg'
+  },
+  {
+    category: 'music-videos',
+    artist:   'Barzakh Ensamble',
+    title:    'Astrakan Café / Ya Rayah',
+    year:     2026,
+    tag:      'Music Video',
+    video:    { id: 'z9odY37J2vo' },
+    // TEMPORAL — reemplazar por un still 1600×900 en assets/images/
+    image:    'https://img.youtube.com/vi/z9odY37J2vo/maxresdefault.jpg'
+  },
+
+  {
+    category: 'live-shows',
+    artist:   'Le Funk',
+    title:    "You're The First, The Last, My Everything",
+    year:     2026,
+    tag:      'Live Show',
+    video:    { id: '6N6kUT-P3LQ' },
+    image:    'lsh-le-funk-first-last-my-everything.jpg'
+  },
+  {
+    category: 'live-shows',
+    artist:   'Zyanya',
+    title:    'Caótica · C3 Rooftop',
+    year:     2025,
+    tag:      'Live Show',
+    video:    { id: 'TrtgnCvKG2U' },
+    image:    'lsh-zyanya-caotica-c3-rooftop.jpg'
+  },
+
+  {
+    category: 'live-sessions',
+    artist:   'Le Funk',
+    title:    'El Ahora',
+    year:     2025,
+    tag:      'Live Session',
+    video:    { playlist: 'PL-74pB-gUO9NA2IFx64gFcZuXG8BvbFez' },
+    image:    'ls-le-funk-el-ahora.jpg'
+  },
+  {
+    category: 'live-sessions',
+    artist:   'Oh Lalá Band',
+    title:    'Live At Pinandikua',
+    year:     2026,
+    tag:      'Live Session',
+    video:    { playlist: 'PL-74pB-gUO9PJHQxNABNRSKPIw5ZDLb70' },
+    image:    'ls-oh-lala-pinandikua.jpg'
+  },
+  {
+    category: 'live-sessions',
+    artist:   'Cosmique Music',
+    title:    'Live the Funk',
+    year:     2025,
+    tag:      'Live Session',
+    video:    { playlist: 'PL-74pB-gUO9MHPo7etjC71H1ixTGVSrf3' },
+    image:    'ls-cosmique-live-the-funk.jpg'
+  },
+  {
+    category: 'live-sessions',
+    artist:   'Le Funk',
+    title:    'México Eterno',
+    year:     2025,
+    tag:      'Live Session',
+    video:    { id: 'LPxDsAX5zws' },
+    image:    'ls-le-funk-mexico-eterno.jpg'
+  }
+
+];
+
+/* ═══════════════════════════════════════════════════════════
+   3 · RENDER  (a partir de aquí no hace falta tocar nada)
+   ═══════════════════════════════════════════════════════════ */
+const esc = s => String(s).replace(/[&<>"']/g, c =>
+  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const imgSrc = p => p.image.startsWith('http') ? p.image : 'assets/images/' + p.image;
+
+function renderWork() {
+  const body = document.getElementById('workBody');
+  let html = '';
+  let n = 0;
+
+  CONFIG.categories.forEach((cat, ci) => {
+    const items = PROJECTS.filter(p => p.category === cat.id);
+    if (!items.length) return;
+
+    html += `<div class="category" id="${cat.id}">`;
+    html += `<div class="category-head">
+        <span class="label">/ 0${ci + 1}</span>
+        <h3>${esc(cat.name)}</h3>
+        <span class="label count">${String(items.length).padStart(2,'0')} ${items.length === 1 ? 'piece' : 'pieces'}</span>
+      </div><div class="grid">`;
+
+    items.forEach(p => {
+      n++;
+      html += `<article class="project reveal${p.featured ? ' is-featured' : ''}" data-i="${PROJECTS.indexOf(p)}">
+        <div class="project-thumb">
+          <span class="project-num">N° ${String(n).padStart(2,'0')}</span>
+          <span class="project-tag">${esc(p.tag)}</span>
+          <img src="${imgSrc(p)}" alt="${esc(p.artist)} — ${esc(p.title)}" loading="lazy">
+        </div>
+        <div class="project-info">
+          <h4>${esc(p.artist)}<span class="sub">${esc(p.title)}</span></h4>
+          <span class="year">${p.year}</span>
+        </div>
+      </article>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  body.innerHTML = html;
+
+  document.getElementById('workCount').textContent =
+    String(PROJECTS.length).padStart(2,'0') + ' works';
+  const years = PROJECTS.map(p => p.year);
+  document.getElementById('workRange').textContent =
+    Math.min(...years) + ' / ' + Math.max(...years);
+}
+
+function renderClients() {
+  const names = [...new Set(PROJECTS.map(p => p.artist))];
+  document.getElementById('clientsTrack').innerHTML =
+    [...names, ...names].map(x => `<span>${esc(x)}</span>`).join('');
+}
+
+// Hero
+document.getElementById('heroFrame').src =
+  `https://www.youtube.com/embed/${CONFIG.heroVideoId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${CONFIG.heroVideoId}&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&playsinline=1&disablekb=1`;
+
+renderWork();
+renderClients();
+
+/* ── Menú ── */
+const navToggle = document.getElementById('navToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+let menuOpen = false;
+const setMenu = open => {
+  menuOpen = open;
+  menuOverlay.classList.toggle('is-open', open);
+  navToggle.querySelector('span:last-child').textContent = open ? 'Close' : 'Menu';
+};
+navToggle.addEventListener('click', () => setMenu(!menuOpen));
+document.querySelectorAll('.menu-list a').forEach(a =>
+  a.addEventListener('click', () => setMenu(false)));
+
+/* ── Reveal ── */
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+}, { threshold: .12, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── Modal ── */
+const modal = document.getElementById('videoModal');
+const mFrame = document.getElementById('modalIframe');
+
+document.querySelectorAll('.project').forEach(el => {
+  el.addEventListener('click', () => {
+    const p = PROJECTS[+el.dataset.i];
+    mFrame.src = p.video.playlist
+      ? `https://www.youtube.com/embed/videoseries?list=${p.video.playlist}&autoplay=1&rel=0&modestbranding=1`
+      : `https://www.youtube.com/embed/${p.video.id}?autoplay=1&rel=0&modestbranding=1`;
+    document.getElementById('mTitle').textContent = p.artist;
+    document.getElementById('mSub').textContent = p.title;
+    document.getElementById('mTag').textContent = p.tag;
+    document.getElementById('mYear').textContent = p.year;
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeModal() {
+  modal.classList.remove('is-open');
+  mFrame.src = '';
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (menuOpen) setMenu(false); closeModal(); }
+});
+</script>
+
+</body>
+</html>
