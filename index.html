@@ -92,10 +92,11 @@ img{display:block;max-width:100%;height:auto}
 .section-head h2 .em{font-style:normal;font-weight:400}
 
 /* ── CATEGORÍAS ── */
-.category{margin-bottom:110px}
+.work-overline{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:14px;margin-bottom:84px;border-bottom:1px solid var(--line)}
+.category{margin-bottom:170px}
 .category:last-child{margin-bottom:0}
-.category-head{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:28px;padding-bottom:16px;margin-bottom:34px;border-bottom:1px solid var(--line)}
-.category-head h3{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(26px,3.2vw,40px);letter-spacing:-.025em}
+.category-head{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:32px;padding-bottom:26px;margin-bottom:52px;border-bottom:1px solid var(--line-strong)}
+.category-head h3{font-family:var(--serif);font-weight:200;font-style:italic;font-size:clamp(40px,6vw,86px);line-height:.95;letter-spacing:-.04em}
 .category-head .rule{height:1px;background:var(--line-strong);transform:translateY(-6px)}
 
 /* ── GRID DE PROYECTOS ── */
@@ -220,7 +221,7 @@ footer .right{text-align:right}
       <p>Reel · 2026</p>
       <div class="line"></div>
       <p>Guadalajara — MX</p>
-      <p>Available worldwide</p>
+      <p>Available across LATAM</p>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="stick"></div></div>
@@ -234,9 +235,8 @@ footer .right{text-align:right}
 </div>
 
 <section class="section" id="work">
-  <header class="section-head">
-    <span class="label">/ 01</span>
-    <h2>Selected <span class="em">work</span></h2>
+  <header class="work-overline">
+    <span class="label">Selected work</span>
     <span class="label meta" id="workRange">2025 / 2026</span>
   </header>
   <div id="workBody"></div>
@@ -341,15 +341,6 @@ const PROJECTS = [
   },
   {
     category: 'music-videos',
-    artist:   'Le Funk',
-    title:    'Le Girls',
-    year:     2025,
-    tag:      'Series',
-    video:    { playlist: 'PL-74pB-gUO9M6o00TiBpNH8bBlXL5h1qn' },
-    image:    'mv-le-girls.jpg'
-  },
-  {
-    category: 'music-videos',
     artist:   'Los Afro Brothers',
     title:    'La vida solo es una vez',
     year:     2025,
@@ -379,6 +370,35 @@ const PROJECTS = [
   },
   {
     category: 'live-shows',
+    artist:   'Le Funk',
+    title:    'La Vie En Rose · Pilarica — Live From Plaza de Toros Nuevo Progreso',
+    year:     2025,
+    tag:      'Live Show',
+    video:    { id: 'xortWO2ldlQ' },
+    // TEMPORAL — reemplazar por un still 1600×900 en assets/images/
+    image:    'https://img.youtube.com/vi/xortWO2ldlQ/maxresdefault.jpg'
+  },
+  {
+    category: 'live-shows',
+    artist:   'Le Funk',
+    title:    'Come And Get Your Love · Tú Con Él · I\'m Every Woman · Superstition',
+    year:     2025,
+    tag:      'Live Show',
+    video:    { id: '-lfvvRaFnDM' },
+    // TEMPORAL — reemplazar por un still 1600×900 en assets/images/
+    image:    'https://img.youtube.com/vi/-lfvvRaFnDM/maxresdefault.jpg'
+  },
+  {
+    category: 'live-shows',
+    artist:   'Le Funk',
+    title:    "Can't Get Enough of Your Love Babe · Barry White cover",
+    year:     2024,
+    tag:      'Live Show',
+    video:    { id: 'SzpBlgeaFjc' },
+    image:    'https://img.youtube.com/vi/SzpBlgeaFjc/maxresdefault.jpg'
+  },
+  {
+    category: 'live-shows',
     artist:   'Zyanya',
     title:    'Caótica · C3 Rooftop',
     year:     2025,
@@ -387,6 +407,15 @@ const PROJECTS = [
     image:    'lsh-zyanya-caotica-c3-rooftop.jpg'
   },
 
+  {
+    category: 'live-sessions',
+    artist:   'Le Funk',
+    title:    'Le Girls',
+    year:     2025,
+    tag:      'Series',
+    video:    { playlist: 'PL-74pB-gUO9M6o00TiBpNH8bBlXL5h1qn' },
+    image:    'ls-le-girls.jpg'
+  },
   {
     category: 'live-sessions',
     artist:   'Le Funk',
