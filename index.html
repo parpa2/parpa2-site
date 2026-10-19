@@ -472,7 +472,7 @@ const PROJECTS = [
 const esc = s => String(s).replace(/[&<>"']/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-const imgSrc = p => p.image.startsWith('http') ? p.image : 'assets/images/' + p.image;
+const imgSrc = p => /^(https?:|data:)/.test(p.image) ? p.image : 'assets/images/' + p.image;
 
 function renderWork() {
   const body = document.getElementById('workBody');
