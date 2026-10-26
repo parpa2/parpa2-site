@@ -232,8 +232,8 @@ footer .right{text-align:right}
 
 <div class="index-bar">
   <div>Index<span id="workCount">—</span></div>
-  <div>Year<span>MMXXVI</span></div>
-  <div>Disciplines<span>Direction · Production · Post</span></div>
+  <div>Year<span id="barYear">2026</span></div>
+  <div>Scope<span>Concept to delivery</span></div>
   <div>Base<span>Guadalajara, MX</span></div>
 </div>
 
@@ -295,7 +295,7 @@ footer .right{text-align:right}
 </section>
 
 <footer>
-  <div>© PARPA2 · MMXXVI</div>
+  <div>© PARPA2 · <span id="footYear">2026</span></div>
   <div class="center">Audiovisual studio</div>
   <div class="right">Made in Guadalajara</div>
 </footer>
@@ -544,6 +544,15 @@ document.getElementById('heroFrame').src =
 
 renderWork();
 renderClients();
+
+/* ── Año en curso ── */
+(function () {
+  const y = new Date().getFullYear();
+  ['barYear', 'footYear'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = y;
+  });
+})();
 
 /* ── Favicon: se arma del mismo trazado del ojo ── */
 (function () {
